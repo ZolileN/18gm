@@ -1,0 +1,215 @@
+/* ============================================================
+   18 GANGSTER MUSEUM — hero.css
+   ============================================================ */
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 580px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 6vw calc(8vh + 20px);
+}
+
+/* Carousel background */
+.hero-carousel {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.hero-slide.active { opacity: 1; }
+
+/* Gradient overlays */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 60%, transparent 100%),
+    linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.4) 100%);
+}
+
+/* Red accent bar on left edge */
+.hero-accent-bar {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--red);
+  z-index: 2;
+}
+
+/* Content */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 680px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--red);
+  padding: 6px 14px 6px 10px;
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 1.4rem;
+  animation: fadeSlideUp 0.7s 0.1s both;
+}
+.hero-badge::before {
+  content: '';
+  display: block;
+  width: 20px; height: 2px;
+  background: rgba(255,255,255,0.5);
+}
+
+.hero h1 {
+  font-size: clamp(2.8rem, 7vw, 5.6rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 1.2rem;
+  animation: fadeSlideUp 0.7s 0.25s both;
+}
+.hero h1 .red { color: var(--red); }
+
+.hero-sub {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  font-weight: 300;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 2rem;
+  animation: fadeSlideUp 0.7s 0.4s both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeSlideUp 0.7s 0.55s both;
+}
+
+/* Scroll indicator */
+.hero-scroll-cue {
+  position: absolute;
+  bottom: 2rem; left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  animation: fadeIn 0.5s 1.2s both;
+}
+.hero-scroll-cue span {
+  font-family: var(--font-heading);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+}
+.scroll-arrow {
+  width: 20px; height: 20px;
+  border-right: 2px solid rgba(255,255,255,0.35);
+  border-bottom: 2px solid rgba(255,255,255,0.35);
+  transform: rotate(45deg);
+  animation: bounce 1.6s 1.5s infinite;
+}
+
+/* Carousel dots */
+.hero-dots {
+  position: absolute;
+  right: 6vw; bottom: 3rem;
+  z-index: 3;
+  display: flex;
+  gap: 8px;
+}
+.hero-dot {
+  width: 8px; height: 8px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  border: none;
+  padding: 0;
+}
+.hero-dot.active {
+  background: var(--red);
+  transform: scale(1.3);
+}
+
+/* ── STATS BAR ── */
+.stats-bar {
+  background: var(--red);
+  padding: 0;
+}
+.stats-bar-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.stat-item {
+  padding: 1.6rem 2vw;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.2);
+}
+.stat-item:last-child { border-right: none; }
+.stat-number {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+}
+.stat-label {
+  display: block;
+  font-size: 0.72rem;
+  font-family: var(--font-heading);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  margin-top: 4px;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes bounce {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50%       { transform: rotate(45deg) translateY(5px); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .hero { padding: 0 5vw calc(6vh + 20px); }
+  .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
+  .stat-item:nth-child(2) { border-right: none; }
+  .stat-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.2); }
+  .stat-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.2); }
+}

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media & Press | 18 Gangster Museum</title>
+  <meta name="description" content="Media coverage, press resources and photo gallery for 18 Gangster Museum, Khayelitsha, Cape Town.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/booking.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <style>
+    .page-hero { position:relative;background:var(--charcoal);padding:calc(var(--nav-height) + 4rem) 6vw 4rem;border-bottom:3px solid var(--red); }
+    .breadcrumb { display:flex;gap:8px;align-items:center;font-size:.78rem;color:var(--mid-grey);margin-bottom:1rem; }
+    .breadcrumb a { color:var(--mid-grey);transition:color .2s; }
+    .breadcrumb a:hover { color:var(--red); }
+
+    /* Gallery grid */
+    .gallery-grid {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:4px;
+    }
+    .gallery-item {
+      position:relative; overflow:hidden; cursor:pointer;
+      aspect-ratio:1;
+    }
+    .gallery-item:nth-child(1) { grid-column:span 2; grid-row:span 2; aspect-ratio:auto; }
+    .gallery-item img {
+      width:100%; height:100%; object-fit:cover;
+      transition:transform .5s ease, filter .4s;
+      filter:brightness(.85);
+    }
+    .gallery-item:hover img { transform:scale(1.06); filter:brightness(1); }
+    .gallery-overlay {
+      position:absolute;inset:0;
+      background:rgba(212,18,23,.0);
+      transition:background .3s;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .gallery-item:hover .gallery-overlay { background:rgba(212,18,23,.15); }
+    .gallery-zoom {
+      color:#fff; font-size:1.8rem;
+      opacity:0; transform:scale(.8);
+      transition:all .3s;
+    }
+    .gallery-item:hover .gallery-zoom { opacity:1; transform:scale(1); }
+
+    /* Lightbox */
+    .lightbox {
+      position:fixed;inset:0;z-index:2000;
+      background:rgba(0,0,0,.95);
+      display:flex;align-items:center;justify-content:center;
+      opacity:0;pointer-events:none;
+      transition:opacity .3s;
+    }
+    .lightbox.open { opacity:1;pointer-events:all; }
+    .lightbox img { max-width:90vw;max-height:85vh;object-fit:contain; }
+    .lightbox-close {
+      position:absolute;top:1.5rem;right:1.5rem;
+      background:none;border:1px solid rgba(255,255,255,.3);
+      color:#fff;width:40px;height:40px;font-size:1.2rem;cursor:pointer;
+      transition:all .2s;
+    }
+    .lightbox-close:hover { background:var(--red);border-color:var(--red); }
+    .lightbox-prev,.lightbox-next {
+      position:absolute;top:50%;transform:translateY(-50%);
+      background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+      color:#fff;width:44px;height:44px;font-size:1.3rem;cursor:pointer;
+      transition:all .2s;
+    }
+    .lightbox-prev { left:1.5rem; }
+    .lightbox-next { right:1.5rem; }
+    .lightbox-prev:hover,.lightbox-next:hover { background:var(--red);border-color:var(--red); }
+
+    /* Press coverage */
+    .press-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem; }
+    .press-card {
+      background:var(--charcoal);border:1px solid var(--border);
+      padding:1.8rem;display:flex;flex-direction:column;gap:1rem;
+      transition:border-color .2s;
+    }
+    .press-card:hover { border-color:var(--red); }
+    .press-source {
+      font-family:var(--font-heading);font-size:.65rem;font-weight:700;
+      letter-spacing:.18em;text-transform:uppercase;color:var(--red);
+    }
+    .press-card h4 { font-size:1rem;color:var(--white);line-height:1.35; }
+    .press-card p { font-size:.85rem;color:var(--mid-grey);flex:1;margin:0; }
+    .press-card a {
+      font-family:var(--font-heading);font-size:.7rem;font-weight:600;
+      letter-spacing:.14em;text-transform:uppercase;
+      color:var(--red);display:inline-flex;align-items:center;gap:6px;
+      transition:gap .2s;
+    }
+    .press-card a:hover { gap:10px; }
+
+    @media(max-width:900px) {
+      .gallery-grid { grid-template-columns:repeat(2,1fr); }
+      .gallery-item:nth-child(1) { grid-column:span 2; }
+      .press-grid { grid-template-columns:1fr 1fr; }
+    }
+    @media(max-width:540px) {
+      .gallery-grid { grid-template-columns:1fr 1fr; }
+      .gallery-item:nth-child(1) { grid-column:span 2;grid-row:auto; }
+      .press-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="site-nav" class="scrolled">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><span class="nav-logo-text">18<span>GM</span></span></a>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="tours.html" class="nav-link">Township Tours</a></li>
+      <li class="nav-item"><a href="media.html" class="nav-link active">Media</a></li>
+      <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+      <li class="nav-item"><a href="donate.html" class="nav-link">Donate</a></li>
+      <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <button class="btn btn-red nav-cta" data-book>Book A Tour</button>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div id="nav-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:849;"></div>
+<div id="nav-drawer" class="nav-drawer">
+  <a href="../index.html" class="drawer-link">Home</a>
+  <a href="tours.html" class="drawer-link">Township Tours</a>
+  <a href="media.html" class="drawer-link">Media</a>
+  <a href="about.html" class="drawer-link">About</a>
+  <a href="donate.html" class="drawer-link">Donate</a>
+  <a href="contact.html" class="drawer-link">Contact</a>
+  <button class="btn btn-red drawer-cta" data-book>Book A Tour</button>
+</div>
+
+<div class="page-hero">
+  <div style="max-width:var(--max-width);margin:0 auto;">
+    <nav class="breadcrumb"><a href="../index.html">Home</a> <span style="color:var(--red)">›</span> <span>Media</span></nav>
+    <p class="eyebrow">Press &amp; Gallery</p>
+    <h1>Media <span class="text-red">&amp; Press</span></h1>
+    <p style="max-width:520px;color:var(--mid-grey);margin-top:.8rem;">18 Gangster Museum has been featured in local and international media. For press enquiries, contact <a href="mailto:media@18gm.co.za" style="color:var(--red)">media@18gm.co.za</a></p>
+  </div>
+</div>
+
+<main>
+  <!-- GALLERY -->
+  <section class="section section--dark">
+    <div class="section-inner">
+      <p class="eyebrow reveal">Photo Gallery</p>
+      <h2 class="reveal">Life in <span class="text-red">Khayelitsha</span></h2>
+      <div class="divider reveal"></div>
+
+      <div class="gallery-grid reveal" id="gallery">
+        <div class="gallery-item" data-index="0">
+          <img src="https://images.unsplash.com/photo-1547989453-bc4defc4b557?w=900&q=80" alt="18 Gangster Museum exhibit" loading="lazy">
+          <div class="gallery-overlay"><span class="gallery-zoom">⊕</span></div>
+        </div>
+        <div class="gallery-item" data-index="1">
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="Township walking tour" loading="lazy">
+          <div class="gallery-overlay"><span class="gallery-zoom">⊕</span></div>
+        </div>
+        <div class="gallery-item" data-index="2">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Township cycling tour" loading="lazy">
+          <div class="gallery-overlay"><span class="gallery-zoom">⊕</span></div>
+        </div>
+        <div class="gallery-item" data-index="3">
+          <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt="Party tour nightlife" loading="lazy">
+          <div class="gallery-overlay"><span class="gallery-zoom">⊕</span></div>
+        </div>
+        <div class="gallery-item" data-index="4">
+          <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80" alt="Research tour" loading="lazy">
+          <div class="gallery-overlay"><span class="gallery-zoom">⊕</span></div>
+        </div>
+        <div class="gallery-item" data-index="5">
+          <img src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=600&q=80" alt="Museum curator" loading="lazy">
+          <div class="gallery-overlay"><span class="gallery-zoom">⊕</span></div>
+        </div>
+        <div class="gallery-item" data-index="6">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80" alt="Tour guide" loading="lazy">
+          <div class="gallery-overlay"><span class="gallery-zoom">⊕</span></div>
+        </div>
+      </div>
+
+      <p style="font-size:.82rem;color:var(--mid-grey);margin-top:1rem;">
+        📸 For high-resolution press images, contact <a href="mailto:media@18gm.co.za" style="color:var(--red)">media@18gm.co.za</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- PRESS COVERAGE -->
+  <section class="section section--grey">
+    <div class="section-inner">
+      <p class="eyebrow reveal">In The News</p>
+      <h2 class="reveal">Press <span class="text-red">Coverage</span></h2>
+      <div class="divider reveal"></div>
+
+      <div class="press-grid">
+        <div class="press-card reveal">
+          <p class="press-source">CNN Travel</p>
+          <h4>"The Khayelitsha museum challenging South Africa's gang culture"</h4>
+          <p>An in-depth feature on how 18 Gangster Museum uses storytelling and immersive experience to shift perceptions of gangsterism.</p>
+          <a href="#" target="_blank" rel="noopener">Read Article →</a>
+        </div>
+        <div class="press-card reveal reveal-delay-1">
+          <p class="press-source">The Guardian</p>
+          <h4>"Inside Cape Town's township museum that puts ex-offenders centre stage"</h4>
+          <p>A profile of the curators and their mission to turn personal trauma into a tool for community transformation.</p>
+          <a href="#" target="_blank" rel="noopener">Read Article →</a>
+        </div>
+        <div class="press-card reveal reveal-delay-2">
+          <p class="press-source">BBC Africa</p>
+          <h4>"How a museum in Khayelitsha is fighting gang culture"</h4>
+          <p>A video documentary exploring the impact of 18 Gangster Museum on youth in Cape Town's townships.</p>
+          <a href="#" target="_blank" rel="noopener">Watch Feature →</a>
+        </div>
+        <div class="press-card reveal">
+          <p class="press-source">Conde Nast Traveler</p>
+          <h4>"The 25 most life-changing travel experiences in Africa"</h4>
+          <p>18 Gangster Museum named one of the continent's most transformative and authentic visitor experiences.</p>
+          <a href="#" target="_blank" rel="noopener">Read Article →</a>
+        </div>
+        <div class="press-card reveal reveal-delay-1">
+          <p class="press-source">Lonely Planet</p>
+          <h4>"Best things to do in Cape Town: authentic township experiences"</h4>
+          <p>18GM featured as a must-visit for travellers seeking genuine cultural connection beyond the tourist trail.</p>
+          <a href="#" target="_blank" rel="noopener">Read Article →</a>
+        </div>
+        <div class="press-card reveal reveal-delay-2">
+          <p class="press-source">Mail &amp; Guardian</p>
+          <h4>"Building hope in Khayelitsha, one tour at a time"</h4>
+          <p>South Africa's leading investigative paper covers 18GM's impact on community employment and youth education.</p>
+          <a href="#" target="_blank" rel="noopener">Read Article →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESS CONTACT -->
+  <section class="section section--dark">
+    <div class="section-inner" style="max-width:640px;margin:0 auto;text-align:center;">
+      <p class="eyebrow reveal" style="justify-content:center;">For the Media</p>
+      <h2 class="reveal">Press <span class="text-red">Enquiries</span></h2>
+      <div class="divider reveal" style="margin:1.2rem auto 1.8rem;"></div>
+      <p class="reveal" style="color:var(--mid-grey);">For interviews, high-resolution images, filming requests, or documentary access, please contact our media team. We welcome responsible journalism that amplifies the voices of our community.</p>
+      <div class="reveal mt-4" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="mailto:media@18gm.co.za" class="btn btn-red">Email Media Team</a>
+        <a href="contact.html" class="btn btn-outline">General Contact</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
+  <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous image">‹</button>
+  <img id="lightbox-img" src="" alt="Gallery image">
+  <button class="lightbox-next" id="lightbox-next" aria-label="Next image">›</button>
+</div>
+
+<footer id="site-footer">
+  <div class="footer-cta-band">
+    <div class="footer-cta-inner">
+      <div class="footer-cta-text"><h3>Experience It Yourself</h3><p>Book a tour and see Khayelitsha through local eyes.</p></div>
+      <button class="btn btn-outline" data-book>Book A Tour</button>
+    </div>
+  </div>
+  <div style="max-width:var(--max-width);margin:0 auto;">
+    <div class="footer-main">
+      <div class="footer-brand"><a href="../index.html" class="footer-brand-logo">18<span>GM</span></a><p>Africa's first living museum — Khayelitsha, Cape Town.</p></div>
+      <div class="footer-col"><h5>Tours</h5><ul>
+        <li><a href="tours.html#walking">Walking Tour</a></li>
+        <li><a href="tours.html#cycling">Cycling Tour</a></li>
+        <li><a href="tours.html#big7">Khayelitsha Big 7</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Navigate</h5><ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Contact</h5>
+        <div class="footer-contact-item"><span class="icon">✉️</span><p><strong>Media</strong><a href="mailto:media@18gm.co.za">media@18gm.co.za</a></p></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© <span id="year"></span> 18 Gangster Museum. All rights reserved.</p></div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="../js/nav.js"></script>
+<script src="../js/booking.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ── LIGHTBOX ──
+  const items  = Array.from(document.querySelectorAll('.gallery-item'));
+  const lb     = document.getElementById('lightbox');
+  const lbImg  = document.getElementById('lightbox-img');
+  let current  = 0;
+
+  const openLightbox = (index) => {
+    current = index;
+    lbImg.src = items[current].querySelector('img').src;
+    lbImg.alt = items[current].querySelector('img').alt;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  const navigate = (dir) => {
+    current = (current + dir + items.length) % items.length;
+    lbImg.src = items[current].querySelector('img').src;
+    lbImg.alt = items[current].querySelector('img').alt;
+  };
+
+  items.forEach((item, i) => item.addEventListener('click', () => openLightbox(i)));
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-prev').addEventListener('click', () => navigate(-1));
+  document.getElementById('lightbox-next').addEventListener('click', () => navigate(1));
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowLeft')  navigate(-1);
+    if (e.key === 'ArrowRight') navigate(1);
+  });
+</script>
+</body>
+</html>

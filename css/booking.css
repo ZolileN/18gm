@@ -1,0 +1,403 @@
+/* ============================================================
+   18 GANGSTER MUSEUM — booking.css
+   ============================================================ */
+
+/* ── MODAL BACKDROP ── */
+.booking-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.booking-backdrop.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── MODAL BOX ── */
+.booking-modal {
+  background: var(--charcoal);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--red);
+  width: 100%;
+  max-width: 620px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.booking-backdrop.is-open .booking-modal {
+  transform: translateY(0) scale(1);
+}
+
+/* ── MODAL HEADER ── */
+.booking-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.8rem 2rem 1.4rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--charcoal);
+  z-index: 2;
+}
+.booking-header-text .eyebrow { margin-bottom: 0.3rem; }
+.booking-header-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--white);
+}
+.booking-close {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--mid-grey);
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+.booking-close:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+/* ── STEP PROGRESS ── */
+.booking-steps {
+  display: flex;
+  gap: 4px;
+  padding: 1rem 2rem 0;
+}
+.booking-step-bar {
+  flex: 1;
+  height: 3px;
+  background: var(--border);
+  transition: background 0.3s;
+}
+.booking-step-bar.is-done    { background: var(--mid-grey); }
+.booking-step-bar.is-active  { background: var(--red); }
+
+.booking-step-labels {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 2rem 1.2rem;
+}
+.booking-step-label {
+  font-family: var(--font-heading);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--border);
+  transition: color 0.3s;
+}
+.booking-step-label.is-active { color: var(--red); }
+.booking-step-label.is-done   { color: var(--mid-grey); }
+
+/* ── MODAL BODY ── */
+.booking-body { padding: 0.5rem 2rem 2rem; }
+
+/* Step panels */
+.booking-panel { display: none; }
+.booking-panel.is-active { display: block; }
+
+/* ── STEP 1: TOUR SELECTION ── */
+.tour-options { display: flex; flex-direction: column; gap: 0.7rem; }
+
+.tour-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: var(--dark-grey);
+  border: 1.5px solid var(--border);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+}
+.tour-option:hover {
+  border-color: rgba(212,18,23,0.5);
+  background: rgba(212,18,23,0.04);
+}
+.tour-option.is-selected {
+  border-color: var(--red);
+  background: rgba(212,18,23,0.08);
+}
+
+.tour-option-info { flex: 1; }
+.tour-option-name {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.tour-option-meta {
+  font-size: 0.75rem;
+  color: var(--mid-grey);
+}
+.tour-option-price {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--red);
+  white-space: nowrap;
+  margin-left: 0.8rem;
+}
+.tour-option-radio {
+  width: 18px; height: 18px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 0.2s;
+}
+.tour-option.is-selected .tour-option-radio {
+  border-color: var(--red);
+}
+.tour-option.is-selected .tour-option-radio::after {
+  content: '';
+  width: 8px; height: 8px;
+  background: var(--red);
+  border-radius: 50%;
+}
+
+/* ── STEP 2: DATE & DETAILS ── */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+}
+.form-row.cols-1 { grid-template-columns: 1fr; }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 1.1rem;
+}
+.form-group:last-child { margin-bottom: 0; }
+
+.form-label {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mid-grey);
+}
+.form-label .required { color: var(--red); margin-left: 2px; }
+
+.form-control {
+  background: var(--dark-grey);
+  border: 1.5px solid var(--border);
+  color: var(--white);
+  padding: 11px 13px;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  border-radius: 0;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.form-control::placeholder { color: var(--border); }
+.form-control:focus { border-color: var(--red); }
+.form-control.is-error { border-color: #e74c3c; }
+
+select.form-control {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+select.form-control option { background: var(--charcoal); }
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Guest counter */
+.guest-counter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.guest-btn {
+  width: 34px; height: 34px;
+  background: var(--dark-grey);
+  border: 1.5px solid var(--border);
+  color: var(--white);
+  font-size: 1.2rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.guest-btn:hover {
+  background: var(--red);
+  border-color: var(--red);
+}
+.guest-number {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--white);
+  min-width: 28px;
+  text-align: center;
+}
+.guest-note {
+  font-size: 0.75rem;
+  color: var(--mid-grey);
+  margin-left: 4px;
+}
+
+/* Error message */
+.form-error {
+  font-size: 0.75rem;
+  color: #e74c3c;
+  margin-top: 3px;
+  display: none;
+}
+.form-error.visible { display: block; }
+
+/* ── STEP 3: REVIEW ── */
+.booking-summary {
+  background: var(--dark-grey);
+  border: 1px solid var(--border);
+  padding: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+.booking-summary h4 {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 0.88rem;
+}
+.summary-row:last-child { border-bottom: none; }
+.summary-row-label { color: var(--mid-grey); }
+.summary-row-value { color: var(--light-grey); text-align: right; }
+.summary-total {
+  border-top: 1px solid var(--border) !important;
+  margin-top: 0.5rem;
+  padding-top: 0.8rem !important;
+}
+.summary-total .summary-row-label {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.summary-total .summary-row-value {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--red);
+}
+
+.payment-notice {
+  background: rgba(212,18,23,0.08);
+  border-left: 3px solid var(--red);
+  padding: 0.8rem 1rem;
+  font-size: 0.8rem;
+  color: var(--light-grey);
+  margin-bottom: 1.5rem;
+}
+
+/* ── SUCCESS STATE ── */
+.booking-success {
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+.success-icon {
+  width: 70px; height: 70px;
+  background: var(--red);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 1.8rem;
+}
+.booking-success h3 {
+  font-size: 1.7rem;
+  color: var(--white);
+  margin-bottom: 0.8rem;
+}
+.booking-success p {
+  font-size: 0.9rem;
+  color: var(--mid-grey);
+  line-height: 1.65;
+  max-width: 380px;
+  margin: 0 auto 1.5rem;
+}
+.booking-success .ref {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: var(--red);
+}
+
+/* ── MODAL FOOTER NAVIGATION ── */
+.booking-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.8rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+}
+.booking-back {
+  background: none;
+  border: none;
+  color: var(--mid-grey);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 6px;
+  transition: color 0.2s;
+}
+.booking-back:hover { color: var(--white); }
+.booking-back:disabled { opacity: 0; pointer-events: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 540px) {
+  .booking-header, .booking-body { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .booking-steps, .booking-step-labels { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .booking-modal { max-height: 95vh; }
+}
