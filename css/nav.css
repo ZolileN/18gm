@@ -230,7 +230,7 @@
 @media (max-width: 860px) {
   .nav-menu { display: none !important; }
   .nav-cta { display: none !important; }
-  .nav-hamburger { display: flex; }
+  .nav-hamburger { display: flex !important; }
   .nav-drawer { display: block; }
   
   /* Ensure nav is visible on mobile */
@@ -241,5 +241,14 @@
   }
   #site-nav.hero-top {
     background: rgba(17, 17, 17, 0.95) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-hamburger {
+    display: flex !important;
+    width: 26px !important;
+    height: 18px !important;
+    z-index: 1001 !important;
   }
 }

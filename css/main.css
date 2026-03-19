@@ -326,6 +326,22 @@ p:last-child { margin-bottom: 0; }
     box-sizing: border-box;
   }
   
+  /* Fix hamburger menu visibility */
+  .nav-hamburger {
+    display: flex !important;
+    width: 26px !important;
+    height: 18px !important;
+    z-index: 1000 !important;
+    position: relative !important;
+  }
+  
+  .nav-hamburger span {
+    display: block !important;
+    height: 2px !important;
+    background: var(--white) !important;
+    border-radius: 2px !important;
+  }
+  
   /* Prevent overflow on all sections */
   section {
     overflow-x: hidden;
