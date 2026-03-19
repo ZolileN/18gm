@@ -206,9 +206,55 @@
 }
 
 /* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .hero { 
+    padding: 0 5vw calc(6vh + 20px); 
+    min-height: 500px;
+  }
+  .hero-content {
+    max-width: 90%;
+  }
+  .hero-actions {
+    gap: 0.75rem;
+  }
+  .hero-dots {
+    right: 5vw;
+    bottom: 2rem;
+  }
+}
+
 @media (max-width: 600px) {
-  .hero { padding: 0 5vw calc(6vh + 20px); }
-  .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
+  .hero { 
+    padding: 0 4vw calc(6vh + 20px); 
+    min-height: 450px;
+  }
+  .hero-content {
+    max-width: 95%;
+  }
+  .hero-badge {
+    font-size: 0.65rem;
+    padding: 5px 12px 5px 8px;
+    margin-bottom: 1rem;
+  }
+  .hero-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-dots {
+    right: 4vw;
+    bottom: 1.5rem;
+  }
+  .stats-bar-inner { 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 0;
+  }
+  .stat-item {
+    padding: 1.2rem 1rem;
+  }
   .stat-item:nth-child(2) { border-right: none; }
   .stat-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.2); }
   .stat-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.2); }
