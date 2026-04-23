@@ -44,6 +44,7 @@
 .nav-logo img {
   height: 44px;
   width: auto;
+  display: block;
 }
 
 .nav-logo-text {
@@ -55,6 +56,11 @@
   line-height: 1;
 }
 .nav-logo-text span { color: var(--red); }
+
+.nav-logo-image {
+  height: 44px;
+  width: auto;
+}
 
 /* Desktop menu */
 .nav-menu {

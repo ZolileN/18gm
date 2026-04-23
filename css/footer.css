@@ -64,6 +64,13 @@
 }
 .footer-brand-logo span { color: var(--red); }
 
+.footer-brand-logo img {
+  display: block;
+  width: auto;
+  height: 56px;
+  max-width: min(220px, 100%);
+}
+
 .footer-brand p {
   font-size: 0.88rem;
   color: var(--mid-grey);
