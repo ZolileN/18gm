@@ -1,12 +1,10 @@
 # Force index.html to root
 /index.html  /  301!
-
-# Clean URLs: Map professional paths to root files
-/tours    /tours.html   200
-/about    /about.html   200
-/contact  /contact.html 200
-/media    /media.html   200
-/donate   /donate.html  200
+/about.html  /about/  301!
+/contact.html  /contact/  301!
+/donate.html  /donate/  301!
+/media.html  /media/  301!
+/tours.html  /tours/  301!
 
 # Language Rewrites: Serve the main pages while keeping the language in the URL
 /es/* /index.html 200
@@ -22,15 +20,15 @@
 /nl/* /index.html 200
 
 # Professional Path Mappings for Languages
-/es/tours /tours.html 200
-/fr/tours /tours.html 200
-/de/tours /tours.html 200
-/es/about /about.html 200
-/fr/about /about.html 200
-/de/about /about.html 200
-/es/contact /contact.html 200
-/fr/contact /contact.html 200
-/de/contact /contact.html 200
+/es/tours /tours/ 200
+/fr/tours /tours/ 200
+/de/tours /tours/ 200
+/es/about /about/ 200
+/fr/about /about/ 200
+/de/about /about/ 200
+/es/contact /contact/ 200
+/fr/contact /contact/ 200
+/de/contact /contact/ 200
 
 # Fallback for 404s
 /* /404.html 404

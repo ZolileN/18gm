@@ -1,4 +1,4 @@
-Options -MultiViews
+Options +FollowSymLinks -MultiViews
 RewriteEngine On
 RewriteBase /
 
@@ -6,21 +6,26 @@ RewriteBase /
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
 RewriteRule ^index\.html$ / [R=301,L]
 
-# Explicit Mappings for Professional URLs
-RewriteRule ^tours$ tours.html [L]
-RewriteRule ^about$ about.html [L]
-RewriteRule ^contact$ contact.html [L]
-RewriteRule ^media$ media.html [L]
-RewriteRule ^donate$ donate.html [L]
+# Redirect old .html paths to new clean folders
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /about\.html\ HTTP/
+RewriteRule ^about\.html$ /about/ [R=301,L]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /contact\.html\ HTTP/
+RewriteRule ^contact\.html$ /contact/ [R=301,L]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /donate\.html\ HTTP/
+RewriteRule ^donate\.html$ /donate/ [R=301,L]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /media\.html\ HTTP/
+RewriteRule ^media\.html$ /media/ [R=301,L]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /tours\.html\ HTTP/
+RewriteRule ^tours\.html$ /tours/ [R=301,L]
 
-# Language rewrites (Zoho style)
-RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/tours$ tours.html [L]
-RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/about$ about.html [L]
-RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/contact$ contact.html [L]
-RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/media$ media.html [L]
-RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/donate$ donate.html [L]
+# Language rewrites
+RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/tours$ /tours/ [L]
+RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/about$ /about/ [L]
+RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/contact$ /contact/ [L]
+RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/media$ /media/ [L]
+RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/donate$ /donate/ [L]
 
-# Generic language root rewrite: /de/ -> index.html
+# Generic language root rewrite
 RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/?$ index.html [L]
 
 # Fallback 404
