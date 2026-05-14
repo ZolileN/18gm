@@ -274,6 +274,32 @@ const Booking = (() => {
     goToStep(4);
   };
 
+  const confirmBookingWA = () => {
+    const btn = document.getElementById('bk-confirm-wa');
+    if (btn) { btn.disabled = true; btn.textContent = 'Opening…'; }
+
+    state.payment = document.getElementById('bk-payment')?.value || 'EFT Bank Transfer';
+    const ref = 'GM-' + Date.now().toString(36).toUpperCase().slice(-6);
+    document.getElementById('bk-ref').textContent = ref;
+    
+    const msg = `Hi 18 Township Tours! I'd like to confirm my booking.
+    
+*Reference:* ${ref}
+*Tour:* ${state.tour.name}
+*Date:* ${formatDate(state.date)}
+*Time:* ${state.time}
+*Guests:* ${state.guests}
+*Name:* ${state.firstName} ${state.lastName}
+*Email:* ${state.email}
+*Phone:* ${state.phone}
+*Payment:* ${state.payment}${state.notes ? '\n*Notes:* ' + state.notes : ''}`;
+
+    const waUrl = `https://wa.me/27637580185?text=${encodeURIComponent(msg)}`;
+    window.open(waUrl, '_blank');
+    
+    setTimeout(() => goToStep(4), 500);
+  };
+
   // ── SUCCESS ───────────────────────────────────────────────
   const showSuccess = () => {
     document.querySelectorAll('.booking-step-bar').forEach(b => {
@@ -420,7 +446,10 @@ const Booking = (() => {
 
             <div class="booking-nav">
               <button class="booking-back" type="button" id="bk-back-3">← Back</button>
-              <button class="btn btn-red" type="button" id="bk-confirm">Confirm Booking ✓</button>
+              <div class="confirm-actions">
+                <button class="btn btn-outline-red" type="button" id="bk-confirm">Confirm Booking By Email ✉️</button>
+                <button class="btn btn-whatsapp" type="button" id="bk-confirm-wa">Confirm Booking By WhatsApp 💬</button>
+              </div>
             </div>
           </div>
 
@@ -481,6 +510,7 @@ const Booking = (() => {
     // Back step 3
     document.getElementById('bk-back-3').addEventListener('click', () => goToStep(2));
     document.getElementById('bk-confirm').addEventListener('click', confirmBooking);
+    document.getElementById('bk-confirm-wa')?.addEventListener('click', confirmBookingWA);
 
     // Guest counter
     document.getElementById('bk-minus').addEventListener('click', () => updateGuests(-1));
