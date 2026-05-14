@@ -1,17 +1,19 @@
+Options -MultiViews
 RewriteEngine On
+RewriteBase /
 
 # Redirect index.html to root
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
 RewriteRule ^index\.html$ / [R=301,L]
 
-# Clean URLs: Map /page to page.html
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^([^/]+)$ $1.html [L]
+# Explicit Mappings for Professional URLs
+RewriteRule ^tours$ tours.html [L]
+RewriteRule ^about$ about.html [L]
+RewriteRule ^contact$ contact.html [L]
+RewriteRule ^media$ media.html [L]
+RewriteRule ^donate$ donate.html [L]
 
 # Language rewrites (Zoho style)
-# Example: /de/tours -> tours.html
 RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/tours$ tours.html [L]
 RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/about$ about.html [L]
 RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/contact$ contact.html [L]
