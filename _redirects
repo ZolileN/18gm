@@ -1,3 +1,10 @@
+# Clean URLs: Map professional paths to internal files
+/tours    /pages/tours.html   200
+/about    /pages/about.html   200
+/contact  /pages/contact.html 200
+/media    /pages/media.html   200
+/donate   /pages/donate.html  200
+
 # Language Rewrites: Serve the main pages while keeping the language in the URL
 /es/* /index.html 200
 /fr/* /index.html 200
@@ -11,7 +18,7 @@
 /he/* /index.html 200
 /nl/* /index.html 200
 
-# Subpages support (Optional but recommended if you want /de/tours)
+# Subpages support for languages (e.g. /de/tours)
 /es/tours /pages/tours.html 200
 /fr/tours /pages/tours.html 200
 /de/tours /pages/tours.html 200
