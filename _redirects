@@ -1,6 +1,13 @@
 # Force index.html to root
 /index.html  /  301!
 
+# Clean URLs: Map professional paths to root files
+/tours    /tours.html   200
+/about    /about.html   200
+/contact  /contact.html 200
+/media    /media.html   200
+/donate   /donate.html  200
+
 # Language Rewrites: Serve the main pages while keeping the language in the URL
 /es/* /index.html 200
 /fr/* /index.html 200

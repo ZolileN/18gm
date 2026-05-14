@@ -1,0 +1,25 @@
+RewriteEngine On
+
+# Redirect index.html to root
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+RewriteRule ^index\.html$ / [R=301,L]
+
+# Clean URLs: Map /page to page.html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^/]+)$ $1.html [L]
+
+# Language rewrites (Zoho style)
+# Example: /de/tours -> tours.html
+RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/tours$ tours.html [L]
+RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/about$ about.html [L]
+RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/contact$ contact.html [L]
+RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/media$ media.html [L]
+RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/donate$ donate.html [L]
+
+# Generic language root rewrite: /de/ -> index.html
+RewriteRule ^(es|fr|de|it|pt|zh|ja|ru|ar|he|nl)/?$ index.html [L]
+
+# Fallback 404
+ErrorDocument 404 /404.html
