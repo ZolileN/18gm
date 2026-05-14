@@ -213,6 +213,70 @@ window.I18n = (function() {
     navMenu.appendChild(li);
   }
 
+  // Premium Translation Banner (Zoho Style)
+  function injectTranslationBanner() {
+    const hasLangCookie = document.cookie.split('; ').find(row => row.startsWith('googtrans='));
+    const isDismissed = localStorage.getItem('i18n_banner_dismissed');
+    if (hasLangCookie || isDismissed) return;
+
+    const browserLang = navigator.language.split('-')[0];
+    const supportedLangs = {
+      'es': 'Español',
+      'fr': 'Français',
+      'de': 'Deutsch',
+      'it': 'Italiano',
+      'pt': 'Português',
+      'zh': '中文',
+      'ja': '日本語',
+      'ru': 'Русский',
+      'ar': 'العربية',
+      'he': 'עברית'
+    };
+
+    if (browserLang === 'en' || !supportedLangs[browserLang]) return;
+
+    const banner = document.createElement('div');
+    banner.id = 'i18n-banner';
+    banner.style.cssText = `
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #111;
+      color: #fff;
+      z-index: 10001;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      border-bottom: 2px solid var(--red);
+    `;
+
+    banner.innerHTML = `
+      <div style="max-width: var(--max-width); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 12px 20px;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <span style="background: var(--red); color: #fff; padding: 2px 6px; font-weight: bold; border-radius: 2px; font-size: 0.7rem;">NOTICE</span>
+          <p style="margin: 0;">Would you like to view this site in <strong>${supportedLangs[browserLang]}</strong>?</p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button id="i18n-accept" style="background: var(--red); color: #fff; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">Translate</button>
+          <button id="i18n-dismiss" style="background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); padding: 6px 12px; border-radius: 4px; cursor: pointer;">✕</button>
+        </div>
+      </div>
+    `;
+
+    document.body.prepend(banner);
+
+    document.getElementById('i18n-accept').onclick = () => {
+      const targetLang = browserLang === 'zh' ? 'zh-CN' : browserLang;
+      // Professional Redirect: /de/ instead of just reloading
+      window.location.href = `/${targetLang}${window.location.pathname}`;
+    };
+
+    document.getElementById('i18n-dismiss').onclick = () => {
+      banner.remove();
+      localStorage.setItem('i18n_banner_dismissed', 'true');
+    };
+  }
+
   // Google Translate Integration (Hidden)
   function initTranslator() {
     const container = document.createElement('div');
@@ -220,11 +284,12 @@ window.I18n = (function() {
     container.style.display = 'none'; // Hide the ugly widget
     document.body.appendChild(container);
     
-    // Check URL for language (e.g. /es/ or ?lang=es)
-    const urlParams = new URLSearchParams(window.location.search);
-    const langParam = urlParams.get('lang');
+    // Check URL for language (Professional URL structure /es/ etc)
     const pathSegments = window.location.pathname.split('/');
     const langInPath = pathSegments.find(seg => ['fr','de','es','it','nl','pt','zh-CN','ja','ko','ar','he','ru'].includes(seg.toLowerCase()));
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get('lang');
 
     const targetLang = langParam || langInPath;
     if (targetLang) {
@@ -251,6 +316,7 @@ window.I18n = (function() {
     initRTLObserver();
     injectCurrencySelector();
     injectLanguageSelector();
+    injectTranslationBanner();
     initTranslator();
   });
 
