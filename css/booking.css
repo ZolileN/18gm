@@ -394,10 +394,39 @@ textarea.form-control {
 .booking-back:hover { color: var(--white); }
 .booking-back:disabled { opacity: 0; pointer-events: none; }
 
+/* ── CONFIRM ACTIONS ── */
+.btn-whatsapp {
+  background: #25d366;
+  color: var(--white);
+  border-color: #25d366;
+}
+.btn-whatsapp:hover {
+  background: #1ebe5d;
+  border-color: #1ebe5d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 540px) {
   .booking-header, .booking-body { padding-left: 1.2rem; padding-right: 1.2rem; }
   .booking-steps, .booking-step-labels { padding-left: 1.2rem; padding-right: 1.2rem; }
   .form-row { grid-template-columns: 1fr; }
   .booking-modal { max-height: 95vh; }
+  .booking-nav { flex-wrap: wrap; gap: 1rem; }
+  .confirm-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .confirm-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
