@@ -1,5 +1,5 @@
 /* ============================================================
-   18 GANGSTER MUSEUM — carousel.js
+   18 TOWNSHIP TOURS — carousel.js
    Hero image carousel with dots & auto-play
    ============================================================ */
 

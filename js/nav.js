@@ -1,5 +1,5 @@
 /* ============================================================
-   18 GANGSTER MUSEUM — nav.js
+   18 TOWNSHIP TOURS — nav.js
    Sticky nav, mobile drawer, dropdown accessibility
    ============================================================ */
 

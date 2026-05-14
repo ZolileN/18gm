@@ -1,5 +1,5 @@
 /* ============================================================
-   18 GANGSTER MUSEUM — main.js
+   18 TOWNSHIP TOURS — main.js
    Init, scroll reveal, shared utilities
    ============================================================ */
 
@@ -127,6 +127,22 @@ const initContactForm = () => {
   });
 };
 
+// ── WHATSAPP BUTTON ──────────────────────────────────────────
+const initWhatsAppButton = () => {
+  const btn = document.createElement('a');
+  btn.href = "https://wa.me/27637580185?text=Hi%2018%20Township%20Tours,%20I'd%20like%20to%20make%20a%20booking.";
+  btn.target = "_blank";
+  btn.rel = "noopener";
+  btn.className = "whatsapp-float";
+  btn.setAttribute('aria-label', 'Chat on WhatsApp');
+  btn.innerHTML = `
+    <svg viewBox="0 0 32 32" width="32" height="32" fill="white">
+      <path d="M16.05 1.5C8.04 1.5 1.5 8.04 1.5 16.05c0 3.18 1.03 6.13 2.78 8.52l-2.07 7.57 7.74-2.03c2.32 1.63 5.15 2.58 8.1 2.58 8.01 0 14.55-6.54 14.55-14.55C32.6 8.04 26.06 1.5 16.05 1.5zM24.7 22.06c-.34.95-1.95 1.83-2.73 1.95-.74.12-1.74.28-5.32-1.2-4.32-1.78-7.14-6.22-7.36-6.51-.21-.29-1.75-2.33-1.75-4.44 0-2.11 1.09-3.15 1.48-3.56.39-.4 1.25-.66 1.76-.66.17 0 .34 0 .48.02.4.04.81.16 1.09.83.35.83 1.18 2.87 1.28 3.08.11.21.18.46.04.75-.14.29-.21.46-.42.71-.21.25-.44.54-.62.73-.21.23-.43.48-.19.89.24.41 1.07 1.77 2.31 2.88 1.6 1.44 2.92 1.89 3.32 2.08.4.19.64.16.88-.11.24-.27 1.02-1.2 1.3-1.61.27-.41.54-.34.91-.21.36.12 2.31 1.09 2.7 1.29.39.19.65.29.75.46.09.16.09.95-.25 1.9z"/>
+    </svg>
+  `;
+  document.body.appendChild(btn);
+};
+
 // ── INITIALISE ─────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initReveal();
@@ -134,4 +150,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initActiveNav();
   initSmoothScroll();
   initContactForm();
+  initWhatsAppButton();
 });

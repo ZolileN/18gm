@@ -1,6 +1,6 @@
 # /images — Asset Guide
 
-Replace placeholder (Unsplash) images with real 18GM photos.
+Replace placeholder (Unsplash) images with real 18TT photos.
 
 ## Required Files
 

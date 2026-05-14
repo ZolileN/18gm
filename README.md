@@ -1,6 +1,6 @@
-# 18 Gangster Museum — Website
+# 18 Township Tours — Website
 
-Official website for **18 Gangster Museum**, Africa's first living museum dedicated to demystifying gangsterism, based in Khayelitsha, Cape Town.
+Official website for **18 Township Tours**, Africa's first living museum dedicated to demystifying gangsterism, based in Khayelitsha, Cape Town.
 
 ## 🗂 Project Structure
 
@@ -93,4 +93,4 @@ Options:
 
 ## 📄 License
 
-© 18 Gangster Museum. All rights reserved.
+© 18 Township Tours. All rights reserved.

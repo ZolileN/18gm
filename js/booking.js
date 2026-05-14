@@ -1,5 +1,5 @@
 /* ============================================================
-   18 GANGSTER MUSEUM — booking.js
+   18 TOWNSHIP TOURS — booking.js
    3-step booking modal: tour select → details → review
    ============================================================ */
 
@@ -12,18 +12,18 @@ const Booking = (() => {
     {
       id: 'walking',
       name: '3hr Township Walking Tour',
-      meta: '3 Hours · 2–15 Guests · Khayelitsha',
-      price: 450,
-      priceLabel: 'R450 pp',
+      meta: '3 Hours · 2–50 Guests · Khayelitsha',
+      price: 650,
+      priceLabel: 'R650 pp',
       duration: '3 Hours',
-      description: 'Explore Khayelitsha on foot with a local guide and visit the 18 Gangster Museum.'
+      description: 'Explore Khayelitsha on foot with a local guide and visit the 18 Township Tours.'
     },
     {
       id: 'cycling',
       name: 'Township Cycling Tour',
       meta: '4 Hours · Bicycle provided · All levels',
-      price: 550,
-      priceLabel: 'R550 pp',
+      price: 1200,
+      priceLabel: 'R1200 pp',
       duration: '4 Hours',
       description: 'See Khayelitsha from two wheels with a guided cycling experience.'
     },
@@ -31,8 +31,8 @@ const Booking = (() => {
       id: 'party',
       name: 'Party Tour',
       meta: '5 Hours · Evening · 18+ only',
-      price: 600,
-      priceLabel: 'R600 pp',
+      price: 1200,
+      priceLabel: 'R1200 pp',
       duration: '5 Hours',
       description: 'Experience the vibrant nightlife and music culture of Khayelitsha.'
     },
@@ -434,7 +434,7 @@ const Booking = (() => {
               </p>
               <p class="ref">Reference: <span id="bk-ref"></span></p>
               <p style="margin-top:.5rem;font-size:.8rem;">
-                Urgent? Call us: <a href="tel:+27213612692" style="color:var(--red)">+27 21 361 2692</a>
+                Urgent? Call us: <a href="tel:+27637580185" style="color:var(--red)">+27 63 758 0185</a>
               </p>
               <button class="btn btn-red" style="margin-top:1.5rem" id="bk-done" type="button">Done</button>
             </div>
