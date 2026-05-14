@@ -12,6 +12,16 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.18gm.co.za/">
   <link rel="canonical" href="https://www.18gm.co.za/">
+  <link rel="alternate" hreflang="en" href="https://www.18gm.co.za/" />
+  <link rel="alternate" hreflang="es" href="https://www.18gm.co.za/es/" />
+  <link rel="alternate" hreflang="fr" href="https://www.18gm.co.za/fr/" />
+  <link rel="alternate" hreflang="de" href="https://www.18gm.co.za/de/" />
+  <link rel="alternate" hreflang="zh-CN" href="https://www.18gm.co.za/zh-CN/" />
+  <link rel="alternate" hreflang="ru" href="https://www.18gm.co.za/ru/" />
+  <link rel="alternate" hreflang="pt" href="https://www.18gm.co.za/pt/" />
+  <link rel="alternate" hreflang="it" href="https://www.18gm.co.za/it/" />
+  <link rel="alternate" hreflang="ja" href="https://www.18gm.co.za/ja/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.18gm.co.za/" />
   <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
@@ -228,7 +238,7 @@
           <div class="tour-card-footer">
             <div class="tour-price">
               <span class="from">From</span>
-              <span class="amount">R650</span> <span style="font-size:.8rem;color:var(--mid-grey)">per person</span>
+              <span class="amount price" data-zar="650">R650</span> <span style="font-size:.8rem;color:var(--mid-grey)">per person</span>
             </div>
             <button class="btn btn-red" data-book="walking">Book Now</button>
           </div>
@@ -251,7 +261,7 @@
             <span class="tour-meta-item"><span class="icon">🚴</span> All levels</span>
           </div>
           <div class="tour-card-footer">
-            <div class="tour-price"><span class="from">From</span><span class="amount"> R1200</span></div>
+            <div class="tour-price"><span class="from">From</span><span class="amount price" data-zar="1200"> R1200</span></div>
             <button class="btn btn-outline-red" data-book="cycling">Book</button>
           </div>
         </div>
@@ -273,7 +283,7 @@
             <span class="tour-meta-item"><span class="icon">🎵</span> 18+ only</span>
           </div>
           <div class="tour-card-footer">
-            <div class="tour-price"><span class="from">From</span><span class="amount"> R1200</span></div>
+            <div class="tour-price"><span class="from">From</span><span class="amount price" data-zar="1200"> R1200</span></div>
             <button class="btn btn-outline-red" data-book="party">Book</button>
           </div>
         </div>
@@ -482,6 +492,7 @@
 </footer>
 
 <!-- ── SCRIPTS ── -->
+<script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
 <script src="js/nav.js"></script>
 <script src="js/carousel.js"></script>

@@ -1,0 +1,84 @@
+/* ============================================================
+   18 TOWNSHIP TOURS — rtl.css
+   Overrides for Right-to-Left languages
+   ============================================================ */
+
+/* Typography & Direction */
+html[dir="rtl"], body[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Fix Hero Background if asymmetrical */
+html[dir="rtl"] .hero {
+  background-position: left center;
+}
+
+/* Buttons */
+html[dir="rtl"] .btn {
+  /* Swap arrow spacing or icons if they are hardcoded */
+}
+
+/* Nav Bar */
+html[dir="rtl"] .nav-inner {
+  /* Flex automatically handles RTL ordering, but we might need to fix specific margins */
+}
+html[dir="rtl"] .nav-dropdown {
+  left: auto;
+  right: 0;
+  text-align: right;
+}
+
+/* Dropdown arrow */
+html[dir="rtl"] .nav-item .arrow {
+  margin-left: 0;
+  margin-right: 4px;
+}
+
+/* Eyebrows with the little red line */
+html[dir="rtl"] .eyebrow {
+  /* The line is an ::before pseudo element, so flex-direction takes care of it, 
+     but ensure it's aligned properly */
+}
+
+/* Footer layout */
+html[dir="rtl"] .footer-col {
+  text-align: right;
+}
+
+/* Booking Modal / Form Controls */
+html[dir="rtl"] .booking-close {
+  margin-left: 0;
+  margin-right: 1rem;
+}
+html[dir="rtl"] .tour-option-price {
+  margin-left: 0;
+  margin-right: 0.8rem;
+}
+html[dir="rtl"] .form-label .required {
+  margin-left: 0;
+  margin-right: 2px;
+}
+html[dir="rtl"] select.form-control {
+  background-position: left 12px center;
+  padding-right: 13px;
+  padding-left: 36px;
+}
+
+/* Testimonials / Blockquotes */
+html[dir="rtl"] blockquote {
+  border-left: none !important;
+  border-right: 3px solid var(--red) !important;
+}
+
+/* Fix generic margin/padding utilities if any exist, e.g. mr-2 to ml-2 */
+html[dir="rtl"] .margin-left {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Contact form */
+html[dir="rtl"] .footer-contact-item .icon {
+  margin-right: 0;
+  margin-left: 12px;
+}

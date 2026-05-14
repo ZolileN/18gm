@@ -225,7 +225,7 @@ const Booking = (() => {
     if (!box || !state.tour) return;
 
     const total = state.tour.price
-      ? `R${(state.tour.price * state.guests).toLocaleString()}`
+      ? (window.I18n ? window.I18n.convertAndFormat(state.tour.price * state.guests) : `R${(state.tour.price * state.guests).toLocaleString()}`)
       : 'Quote on request';
 
     box.innerHTML = `
@@ -245,8 +245,7 @@ const Booking = (() => {
 
   const formatDate = (dateStr) => {
     if (!dateStr) return 'TBD';
-    const d = new Date(dateStr + 'T00:00:00');
-    return d.toLocaleDateString('en-ZA', { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' });
+    return window.I18n ? window.I18n.formatDate(dateStr) : dateStr;
   };
 
   // ── CONFIRM SUBMISSION ────────────────────────────────────
@@ -319,7 +318,9 @@ const Booking = (() => {
           <div class="tour-option-name">${t.name}</div>
           <div class="tour-option-meta">${t.meta}</div>
         </div>
-        <div class="tour-option-price">${t.priceLabel}</div>
+        <div class="tour-option-price" ${t.price ? `data-i18n-price="${t.price}"` : ''}>
+          ${t.price ? (window.I18n ? window.I18n.convertAndFormat(t.price) : 'R'+t.price) + ' pp' : 'Quote'}
+        </div>
         <div class="tour-option-radio" aria-hidden="true"></div>
       </button>`).join('');
 
@@ -524,6 +525,14 @@ const Booking = (() => {
     // Wire all [data-book] triggers
     document.querySelectorAll('[data-book]').forEach(el => {
       el.addEventListener('click', () => open(el.dataset.book || null));
+    });
+
+    window.addEventListener('currencyChanged', () => {
+      document.querySelectorAll('[data-i18n-price]').forEach(el => {
+        const p = parseFloat(el.getAttribute('data-i18n-price'));
+        el.textContent = window.I18n.convertAndFormat(p) + ' pp';
+      });
+      if (state.currentStep === 3) buildSummary();
     });
   };
 

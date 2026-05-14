@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Donate | 18 TT</title>
   <meta name="description" content="Support 18 Township Tours with a donation. Help fund free school visits and community programs in Khayelitsha.">
+  <link rel="alternate" hreflang="en" href="https://www.18gm.co.za/pages/donate.html" />
+  <link rel="alternate" hreflang="es" href="https://www.18gm.co.za/pages/donate.html?lang=es" />
+  <link rel="alternate" hreflang="fr" href="https://www.18gm.co.za/pages/donate.html?lang=fr" />
+  <link rel="alternate" hreflang="de" href="https://www.18gm.co.za/pages/donate.html?lang=de" />
+  <link rel="alternate" hreflang="zh-CN" href="https://www.18gm.co.za/pages/donate.html?lang=zh-CN" />
+  <link rel="alternate" hreflang="ru" href="https://www.18gm.co.za/pages/donate.html?lang=ru" />
+  <link rel="alternate" hreflang="pt" href="https://www.18gm.co.za/pages/donate.html?lang=pt" />
+  <link rel="alternate" hreflang="it" href="https://www.18gm.co.za/pages/donate.html?lang=it" />
+  <link rel="alternate" hreflang="ja" href="https://www.18gm.co.za/pages/donate.html?lang=ja" />
+  <link rel="alternate" hreflang="x-default" href="https://www.18gm.co.za/pages/donate.html" />
   <link rel="apple-touch-icon" sizes="57x57" href="../images/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="../images/apple-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-icon-72x72.png">
@@ -88,15 +98,15 @@
           <div class="divider"></div>
           <div class="donation-grid" style="margin-bottom:2rem;">
             <div class="donation-card">
-              <span class="donation-amount">R50</span>
+              <span class="donation-amount price" data-zar="50">R50</span>
               <p class="donation-label">Funds one school child's museum visit</p>
             </div>
             <div class="donation-card">
-              <span class="donation-amount">R200</span>
+              <span class="donation-amount price" data-zar="200">R200</span>
               <p class="donation-label">Supports one community program session</p>
             </div>
             <div class="donation-card">
-              <span class="donation-amount">R500</span>
+              <span class="donation-amount price" data-zar="500">R500</span>
               <p class="donation-label">Helps cover curator employment for one day</p>
             </div>
           </div>
@@ -106,11 +116,11 @@
         <div class="reveal reveal-delay-1" style="background:var(--charcoal);padding:2.5rem;border:1px solid var(--border);border-top:3px solid var(--red);">
           <h3 style="font-size:1.4rem;margin-bottom:1.4rem;">Choose an Amount</h3>
           <div class="amount-chips">
-            <button class="amount-chip" onclick="setAmount(this,'50')">R50</button>
-            <button class="amount-chip active" onclick="setAmount(this,'100')">R100</button>
-            <button class="amount-chip" onclick="setAmount(this,'200')">R200</button>
-            <button class="amount-chip" onclick="setAmount(this,'500')">R500</button>
-            <button class="amount-chip" onclick="setAmount(this,'1000')">R1,000</button>
+            <button class="amount-chip" onclick="setAmount(this,'50')"><span class="price" data-zar="50">R50</span></button>
+            <button class="amount-chip active" onclick="setAmount(this,'100')"><span class="price" data-zar="100">R100</span></button>
+            <button class="amount-chip" onclick="setAmount(this,'200')"><span class="price" data-zar="200">R200</span></button>
+            <button class="amount-chip" onclick="setAmount(this,'500')"><span class="price" data-zar="500">R500</span></button>
+            <button class="amount-chip" onclick="setAmount(this,'1000')"><span class="price" data-zar="1000">R1,000</span></button>
           </div>
           <div class="form-group">
             <label class="form-label" for="custom-amount">Or enter custom amount (ZAR)</label>
@@ -174,6 +184,7 @@
   </div>
 </footer>
 
+<script src="../js/i18n.js"></script>
 <script src="../js/main.js"></script>
 <script src="../js/nav.js"></script>
 <script src="../js/booking.js"></script>
