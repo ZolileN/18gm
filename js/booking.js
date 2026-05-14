@@ -37,13 +37,13 @@ const Booking = (() => {
       description: 'Experience the vibrant nightlife and music culture of Khayelitsha.'
     },
     {
-      id: 'big7',
-      name: 'Khayelitsha Big 7',
-      meta: 'Full Day · Signature experience · Lunch included',
-      price: 850,
-      priceLabel: 'R850 pp',
-      duration: 'Full Day (8+ hrs)',
-      description: 'The ultimate Khayelitsha experience — seven iconic stops in one immersive day.'
+      id: 'combo',
+      name: 'Combo : City Tour + Township Tour',
+      meta: 'Full Day · Includes Transportation · City & Township',
+      price: 1500,
+      priceLabel: 'R1500 pp',
+      duration: 'Full Day',
+      description: 'The best of both worlds: explore Cape Town City Center highlights followed by an immersive Khayelitsha township experience.'
     },
     {
       id: 'research',
@@ -55,13 +55,22 @@ const Booking = (() => {
       description: 'Custom deep-dive for researchers, journalists, and academic groups.'
     },
     {
-      id: 'prison',
-      name: 'Prison & Community Tour',
-      meta: '3.5 Hours · Eye-opening · Local insights',
+      id: 'city',
+      name: 'City Tour',
+      meta: '2.5 Hours · Historic Center · Walking',
+      price: 450,
+      priceLabel: 'R450 pp',
+      duration: '2.5 Hours',
+      description: 'Explore the historic heart of Cape Town with our expert guides, covering major landmarks and hidden stories.'
+    },
+    {
+      id: 'langa',
+      name: 'Langa Cultural Tour',
+      meta: '90 Minutes · Oldest Township · Local Culture',
       price: 500,
       priceLabel: 'R500 pp',
-      duration: '3.5 Hours',
-      description: 'Visit correctional facilities and community outreach programs with ex-offender guides.'
+      duration: '90 Minutes',
+      description: 'Visit the historic Dompas Museum, experience traditional brewing, and explore the heart of Langa.'
     }
   ];
 
