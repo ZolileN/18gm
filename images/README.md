@@ -8,8 +8,7 @@ Replace placeholder (Unsplash) images with real 18TT photos.
 |----------------------|------------------------------|------------------|
 | `favicon.ico`        | Browser tab icon             | 32×32 px         |
 | `og-image.jpg`       | Social media share image     | 1200×630 px      |
-| `logo.png`           | Nav logo (transparent bg)    | 300×80 px        |
-| `logo-white.png`     | Footer logo (white version)  | 300×80 px        |
+| `18-whitelogo.jpg`   | Nav & Footer logo (white)    | 300×80 px        |
 | `hero-1.jpg`         | Hero carousel slide 1        | 1920×1080 px     |
 | `hero-2.jpg`         | Hero carousel slide 2        | 1920×1080 px     |
 | `hero-3.jpg`         | Hero carousel slide 3        | 1920×1080 px     |
