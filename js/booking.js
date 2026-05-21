@@ -187,7 +187,7 @@ const Booking = (() => {
 
   // ── GUEST COUNTER ─────────────────────────────────────────
   const updateGuests = (delta) => {
-    state.guests = Math.max(1, Math.min(30, state.guests + delta));
+    state.guests = Math.max(1, Math.min(60, state.guests + delta));
     const el = document.getElementById('bk-guests');
     if (el) el.textContent = state.guests;
   };
@@ -397,7 +397,7 @@ const Booking = (() => {
                 <button class="guest-btn" type="button" id="bk-minus" aria-label="Decrease guests">−</button>
                 <span class="guest-number" id="bk-guests">2</span>
                 <button class="guest-btn" type="button" id="bk-plus" aria-label="Increase guests">+</button>
-                <span class="guest-note">persons (max 30)</span>
+                <span class="guest-note">persons (max 60)</span>
               </div>
             </div>
 
