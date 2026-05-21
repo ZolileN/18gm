@@ -231,6 +231,51 @@ p:last-child { margin-bottom: 0; }
   white-space: nowrap;
 }
 
+/* ── TESTIMONIALS ── */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.testimonial-card {
+  background: var(--dark-grey);
+  padding: 1.8rem;
+  border-left: 3px solid var(--red);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.testimonial-stars {
+  color: #ffcc00;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.testimonial-text {
+  font-size: 0.92rem;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  color: var(--light-grey);
+  line-height: 1.6;
+}
+
+.testimonial-footer {
+  font-size: 0.78rem;
+  margin-top: auto;
+}
+
+.testimonial-author {
+  color: var(--white);
+}
+
+.testimonial-meta {
+  color: var(--mid-grey);
+}
+
 /* ── WHATSAPP FLOAT BUTTON ── */
 .whatsapp-float {
   position: fixed;
@@ -270,6 +315,11 @@ p:last-child { margin-bottom: 0; }
 /* ── RESPONSIVE HELPERS ── */
 @media (max-width: 768px) {
   :root { --section-pad: 3.5rem 5vw; }
+  
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -345,14 +395,17 @@ p:last-child { margin-bottom: 0; }
   }
   
   /* Improve testimonials on mobile */
-  blockquote[style*="padding:1.8rem"] {
+  blockquote[style*="padding:1.8rem"],
+  .testimonial-card {
     padding: 1.2rem !important;
   }
-  blockquote p {
+  blockquote p,
+  .testimonial-text {
     font-size: 0.9rem !important;
     line-height: 1.5 !important;
   }
-  blockquote footer {
+  blockquote footer,
+  .testimonial-footer {
     font-size: 0.75rem !important;
   }
   
