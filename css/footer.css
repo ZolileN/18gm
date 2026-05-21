@@ -71,6 +71,26 @@
   max-width: min(220px, 100%);
 }
 
+.footer-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-logo-container .footer-brand-logo {
+  margin-bottom: 0;
+}
+
+.footer-tripadvisor-badge {
+  display: block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .footer-brand p {
   font-size: 0.88rem;
   color: var(--mid-grey);
