@@ -276,6 +276,102 @@ p:last-child { margin-bottom: 0; }
   color: var(--mid-grey);
 }
 
+/* ── CLIENTS LOGO MARQUEE ── */
+.clients-section {
+  background: var(--white);
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  overflow: hidden;
+}
+
+.clients-section h2 {
+  color: var(--black);
+}
+
+.marquee-container {
+  overflow: hidden;
+  user-select: none;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  position: relative;
+  width: 100%;
+  padding: 1.5rem 0;
+}
+
+.marquee-container::before,
+.marquee-container::after {
+  content: "";
+  height: 100%;
+  width: 15%;
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marquee-container::before {
+  left: 0;
+  top: 0;
+  background: linear-gradient(to right, var(--white), transparent);
+}
+
+.marquee-container::after {
+  right: 0;
+  top: 0;
+  background: linear-gradient(to left, var(--white), transparent);
+}
+
+.marquee-content {
+  flex: 0 0 auto !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  width: max-content !important; /* Force track to expand to fit all logo items */
+  justify-content: space-around;
+  align-items: center;
+  animation: scroll-left 35s linear infinite;
+  max-width: none !important; /* Prevent global mobile media query from squishing track */
+}
+
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.marquee-item {
+  flex: 0 0 160px !important; /* Fixed width, no grow, no shrink */
+  width: 160px;
+  height: 80px;
+  margin: 0 1.5rem;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  max-width: none !important; /* Prevent global mobile media query from squishing slots */
+}
+
+.marquee-logo {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(0.9) contrast(1.25); /* Enhance visibility of thin-lined logos */
+  opacity: 0.9; /* Set higher base opacity so gray logos are prominent */
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.marquee-logo:hover {
+  filter: grayscale(0%) brightness(1) contrast(1);
+  opacity: 1;
+  transform: scale(1.08);
+}
+
 /* ── WHATSAPP FLOAT BUTTON ── */
 .whatsapp-float {
   position: fixed;
