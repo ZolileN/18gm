@@ -404,12 +404,12 @@ const Booking = (() => {
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label" for="bk-fname">First Name <span class="required">*</span></label>
-                <input class="form-control" type="text" id="bk-fname" placeholder="Thabo" required>
+                <input class="form-control" type="text" id="bk-fname" placeholder="Mandela" required>
                 <span class="form-error" id="bk-fname-err"></span>
               </div>
               <div class="form-group">
                 <label class="form-label" for="bk-lname">Last Name</label>
-                <input class="form-control" type="text" id="bk-lname" placeholder="Dlamini">
+                <input class="form-control" type="text" id="bk-lname" placeholder="Tutu">
               </div>
             </div>
 
@@ -444,8 +444,6 @@ const Booking = (() => {
               <label class="form-label" for="bk-payment">Payment Method</label>
               <select class="form-control" id="bk-payment">
                 <option>EFT Bank Transfer</option>
-                <option>Credit / Debit Card (on arrival)</option>
-                <option>PayFast Online</option>
                 <option>Cash on Arrival</option>
               </select>
             </div>
