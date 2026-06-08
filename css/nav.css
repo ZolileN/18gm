@@ -200,7 +200,11 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--white);
+  background: transparent;
+  border: none;
   border-bottom: 1px solid var(--border);
+  text-align: left;
+  width: 100%;
 }
 .drawer-link:hover { color: var(--red); }
 
